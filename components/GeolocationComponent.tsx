@@ -13,10 +13,10 @@ const GeolocationComponent: React.FC = () => {
     setError("");
 
     try {
-      // Step 1: Get geolocation
+      // Get geolocation
       const { latitude, longitude } = await getGeolocation();
 
-      // Step 2: Fetch address using reverse geocoding
+      // Fetch address using reverse geocoding
       const fetchedAddress = await fetchAddress(latitude, longitude);
       setAddress(fetchedAddress);
     } catch (error: any) {
@@ -27,16 +27,20 @@ const GeolocationComponent: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Get My Location</h1>
-      <button onClick={handleGetLocation} disabled={loading}>
+    <div className="p-4 border rounded-md shadow-md max-w-md mx-auto">
+      <h1 className="text-xl font-bold mb-4">Get My Location</h1>
+      <button
+        onClick={handleGetLocation}
+        disabled={loading}
+        className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-gray-400"
+      >
         {loading ? "Fetching..." : "Get Location"}
       </button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="text-red-500 mt-2">{error}</p>}
       {address && (
-        <div>
-          <h2>Your Address:</h2>
-          <p>{address}</p>
+        <div className="mt-4">
+          <h2 className="text-lg font-semibold">Your Address:</h2>
+          <p className="text-gray-700">{address}</p>
         </div>
       )}
     </div>

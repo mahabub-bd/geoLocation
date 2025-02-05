@@ -2,7 +2,7 @@ const fetchAddress = async (
   latitude: number,
   longitude: number
 ): Promise<string> => {
-  const apiKey = "AIzaSyBoZ748CDTdBTII1tkC6ERDS-mLAuDwb80";
+  const apiKey = process.env.MapKey;
   const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
 
   try {
